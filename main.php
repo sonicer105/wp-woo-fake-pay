@@ -3,7 +3,8 @@
 Plugin Name: Fake Pay For WooCommerce
 Description: Creates a fake payment gateway for admin users.
 Author: Anthony Graddy
-Plugin URI: https://www.dashboardq.com
+Author URI: https://www.dashboardq.com
+Plugin URI: https://github.com/agraddy/wp-woo-fake-pay
 Version: 1.0.0
 */
 
@@ -50,13 +51,6 @@ function init_gateway_class() {
 					'title' => __( 'Description', 'woocommerce' ),
 					'type' => 'textarea',
 					'description' => __( 'Payment method description that the customer will see on your website.', 'woocommerce' ),
-					'desc_tip'      => true,
-					'default' => __( 'This option is only available to admin users.', 'woocommerce' )
-				),
-				'instructions' => array(
-					'title' => __( 'Instructions', 'woocommerce' ),
-					'type' => 'textarea',
-					'description' => __( 'Instructions that will be added to the thank you page.', 'woocommerce' ),
 					'desc_tip'      => true,
 					'default' => __( 'This option is only available to admin users.', 'woocommerce' )
 				)
