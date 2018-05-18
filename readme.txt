@@ -2,10 +2,12 @@
 
 Contributors: agraddy
 Author URI: https://www.dashboardq.com
-Plugin URL: https://github.com/agraddy/wp-woo-fake-pay
+Plugin URI: https://github.com/agraddy/wp-woo-fake-pay
+Requires PHP:  5.6
 Requires at least: 4.0
 Tested up to: 4.9.6
 Tags: woocommerce, payment gateway, payment gateways, test, fake
+Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
