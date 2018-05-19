@@ -5,14 +5,14 @@ Description: Creates a fake payment gateway for admin users.
 Author: Anthony Graddy
 Author URI: https://www.dashboardq.com
 Plugin URI: https://github.com/agraddy/wp-woo-fake-pay
-Version: 1.0.0
+Version: 1.0.1
 */
 
-add_action( 'plugins_loaded', 'init_gateway_class' );
+add_action( 'plugins_loaded', 'fake_pay_init_gateway_class' );
 
-add_filter( 'woocommerce_payment_gateways', 'add_gateway_class' );
+add_filter( 'woocommerce_payment_gateways', 'fake_pay_add_gateway_class' );
 
-function init_gateway_class() {
+function fake_pay_init_gateway_class() {
 	class WC_Gateway_Fake_Pay extends WC_Payment_Gateway {
 		function __construct() {
 			$this->id = 'fake_pay';
@@ -82,7 +82,7 @@ function init_gateway_class() {
 	}
 }
 
-function add_gateway_class( $methods ) {
+function fake_pay_add_gateway_class( $methods ) {
 	$methods[] = 'WC_Gateway_Fake_Pay'; 
 	return $methods;
 }
