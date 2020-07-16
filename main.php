@@ -2,10 +2,12 @@
 /*
 Plugin Name: Fake Pay For WooCommerce
 Description: Creates a fake payment gateway for admin users.
-Author: Anthony Graddy
-Author URI: https://www.dashboardq.com
-Plugin URI: https://github.com/agraddy/wp-woo-fake-pay
-Version: 1.0.1
+Author: Anthony Graddy, Edited by Elias Turner
+Author URI: https://sailextech.me
+Plugin URI: https://github.com/sonicer105/wp-woo-fake-pay
+Original Author URI: https://www.dashboardq.com
+Original Plugin URI: https://github.com/agraddy/wp-woo-fake-pay
+Version: 1.1.0
 */
 
 add_action( 'plugins_loaded', 'fake_pay_init_gateway_class' );
@@ -24,10 +26,6 @@ function fake_pay_init_gateway_class() {
 
 			$this->title = $this->get_option( 'title' );
 			$this->description = $this->get_option( 'description' );
-
-			if(!current_user_can('administrator')) {
-				$this->enabled = false;
-			}
 
 			add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'process_admin_options' ) );
 		}
@@ -60,13 +58,6 @@ function fake_pay_init_gateway_class() {
 		function process_payment( $order_id ) {
 			global $woocommerce;
 			$order = new WC_Order( $order_id );
-
-			if(!current_user_can('administrator')) {
-				$order->update_status( 'failed', '' );
-				$error_message = 'This payment option is not available.';
-				wc_add_notice( __('Payment error:', 'woothemes') . $error_message, 'error' );
-				return;
-			}
 
 			$order->payment_complete();
 
